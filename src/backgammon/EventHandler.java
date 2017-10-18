@@ -125,7 +125,7 @@ public class EventHandler extends JFrame implements ActionListener,MouseListener
     }
     
     private void start(){
-        Object answer = null;            
+        Object answer;            
         Object selectionValues[];
         selectionValues = new Object[2];
 
