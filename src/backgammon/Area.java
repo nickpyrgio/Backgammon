@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Area {
     
     private ArrayList<Piece> array;  //Πίνακας αντικειμένων τύπου Piece(τα πούλια που έχει η Area).   
-    private int position;     //Ο αριθμός της Area(ποιά περιοχή είναι).
+    private final int POSITION;     //Ο αριθμός της Area(ποιά περιοχή είναι).
    
     /**
      * Κατασκευαστής αντικειμένου Area.
@@ -23,7 +23,7 @@ public class Area {
      */
     public Area(int position)
     {
-        this.position = position;
+        this.POSITION = position;
         //Έλεγχος ότι το position είναι σωστό.
         if(position < 0 || position > 27)
         {
@@ -59,14 +59,14 @@ public class Area {
         {
             for(int i = 0 ; i < howManyPieces; i++)
             {
-                this.appendPieceWithoutAdjust(new WhitePiece(this.position));
+                this.appendPieceWithoutAdjust(new WhitePiece(this.POSITION));
             }
         }
         else
         {
             for(int i = 0 ; i < howManyPieces; i++)
             {
-                this.appendPieceWithoutAdjust(new RedPiece(this.position));
+                this.appendPieceWithoutAdjust(new RedPiece(this.POSITION));
             }            
         }        
     }
@@ -82,14 +82,14 @@ public class Area {
         {
             for(int i = 0 ; i < howManyPieces; i++)
             {
-                this.appendPiece(new WhitePiece(this.position));
+                this.appendPiece(new WhitePiece(this.POSITION));
             }
         }
         else
         {
             for(int i = 0 ; i < howManyPieces; i++)
             {
-                this.appendPiece(new RedPiece(this.position));
+                this.appendPiece(new RedPiece(this.POSITION));
             }            
         }
     }        
@@ -141,7 +141,7 @@ public class Area {
      */
     public void appendPieceWithoutAdjust(Piece piece)
     {
-        piece.setPosition(position); 
+        piece.setPosition(POSITION); 
         this.array.add(piece);        
     }
     
@@ -152,7 +152,7 @@ public class Area {
     public void appendPiece(Piece piece)
     {        
         
-         if((position >= 0 && position < 12 || position == 24 || position == 26) )
+         if((POSITION >= 0 && POSITION < 12 || POSITION == 24 || POSITION == 26) )
         {         
             piece.setLocation(this.xCoordinateCalc(), CoordinatePos.LEFT_UP_CORNER_Y); 
         }        
@@ -160,7 +160,7 @@ public class Area {
          {
             piece.setLocation(this.xCoordinateCalc(), CoordinatePos.LEFT_DOWN_CORNER_Y); 
          }        
-        piece.setPosition(position); //Ενημερώνουμε το position που έχει το πούλι.
+        piece.setPosition(POSITION); //Ενημερώνουμε το position που έχει το πούλι.
         this.array.add(piece);  //Προσθέτουμε το πούλι στην περιοχή.
         adjustArea();  //Προσαρμόζουμε την περιοχή(αφορά το GUI).
     }  
@@ -192,7 +192,7 @@ public class Area {
     private int yCoordinateCalc(int i)
     {                       
             
-         if((position >= 0 && position < 12 || position == 24 || position == 26) )
+         if((POSITION >= 0 && POSITION < 12 || POSITION == 24 || POSITION == 26) )
         {            
             if(this.array.isEmpty()) return CoordinatePos.LEFT_UP_CORNER_Y;
             else return this.array.get(i - 1).getY() + calcDistance();
@@ -206,26 +206,26 @@ public class Area {
     
     private int xCoordinateCalc()
     {        
-        if(position >= 0 && position < 12)
+        if(POSITION >= 0 && POSITION < 12)
         {
-            if(position >= 6) return CoordinatePos.LEFT_UP_CORNER_X + CoordinatePos.PIECE_SIZE_X *(position + 1);
-            return CoordinatePos.LEFT_UP_CORNER_X + CoordinatePos.PIECE_SIZE_X * position;
+            if(POSITION >= 6) return CoordinatePos.LEFT_UP_CORNER_X + CoordinatePos.PIECE_SIZE_X *(POSITION + 1);
+            return CoordinatePos.LEFT_UP_CORNER_X + CoordinatePos.PIECE_SIZE_X * POSITION;
             //area 6 is damaged area
         }
-        else if(position == 24 || position == 25)
+        else if(POSITION == 24 || POSITION == 25)
         {
             //Middle column X coordinate
             return CoordinatePos.DAMAGED_AREA_X;
         }
-        else if(position == 26 || position == 27)                
+        else if(POSITION == 26 || POSITION == 27)                
         {        
             //Right corner colummn column X coordinate
             return CoordinatePos.FINAL_AREA_X;
         }             
         else
         {            
-            if(position >= 18) return CoordinatePos.RIGHT_DOWN_CORNER_X - ((position + 2) %13)*CoordinatePos.PIECE_SIZE_X;
-            return CoordinatePos.RIGHT_DOWN_CORNER_X - ((position + 1)%13)*CoordinatePos.PIECE_SIZE_X  ;            
+            if(POSITION >= 18) return CoordinatePos.RIGHT_DOWN_CORNER_X - ((POSITION + 2) %13)*CoordinatePos.PIECE_SIZE_X;
+            return CoordinatePos.RIGHT_DOWN_CORNER_X - ((POSITION + 1)%13)*CoordinatePos.PIECE_SIZE_X  ;            
         }        
     }
     
