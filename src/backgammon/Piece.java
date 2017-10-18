@@ -91,5 +91,4 @@ public class Piece extends JLabel
        return ("X :" + this.getX() + "Y :" + this.getY() + " ");
    }
     
-    
 }
