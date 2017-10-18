@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 public final class Dice extends JLabel {
     
     private   ImageIcon img[];  //Πίνακας από εικόνες που δείχνουν τις τιμές του ζαριού.
-    private int randomNum;      //Ένας τυχαίος iinteger αριθμός.
+    private int randomNum;      //Ένας τυχαίος integer αριθμός.
     boolean isWhite;            //Boolean μεταβλητή που δείχνει αν το ζάρι είναι άσπρο η κόκκινο.
     
     private static final int DICE_WIDTH = 65;  //Τελικές μεταβλητές στις οποίες αποθηκεύουμε
