@@ -15,10 +15,10 @@ package backgammon;
 
  class CheckerArea {
 
-    private static final byte whiteChecker = -1;  //Αντιστοιχίζουμε την τιμή -1 στα ασπρα πούλια,
-    private static final byte redChecker = 1;     //την τιμή 1 στα κόκκινα και
-    private static final byte emptyArea = 0;      //την τιμή 0 στις άδειες περιοχές.
-    private byte[] checkerArray;           //Πίνακας από bytes,που αντιπροσωπεύει μια περιοχή καισε κάθε 
+    private static final byte WHITE_CHECKER = -1;  //Αντιστοιχίζουμε την τιμή -1 στα ασπρα πούλια,
+    private static final byte RED_CHECKER = 1;     //την τιμή 1 στα κόκκινα και
+    private static final byte EMPTY_AREA = 0;      //την τιμή 0 στις άδειες περιοχές.
+    private byte[] CHECKER_ARRAY;           //Πίνακας από bytes,που αντιπροσωπεύει μια περιοχή καισε κάθε 
                                            //θέση του οποίου θα υπάρχει 1 πούλι.
     private int currentCapacity;           //Χωρητικότητα του checkerArray(μέχρι πόσα πούλια μπορεί να έχει μια περιοχή).
 
@@ -28,7 +28,7 @@ package backgammon;
      */
     protected CheckerArea(int position)
     {        
-        this.checkerArray = new byte[15];
+        this.CHECKER_ARRAY = new byte[15];
         this.currentCapacity = 0;
     }
     
@@ -42,9 +42,9 @@ package backgammon;
     {
         if(index < 0 || index >= this.currentCapacity)
         {
-            return emptyArea;
+            return EMPTY_AREA;
         }
-        return this.checkerArray[index];
+        return this.CHECKER_ARRAY[index];
     }
 
     /**
@@ -59,14 +59,14 @@ package backgammon;
             //Προσθέτουμε ένα ένα τα πούλια με χρήση της appendPiece.
             for(int i = 0 ; i < howManyPieces; i++)
             {
-                this.appendPiece(CheckerArea.whiteChecker); 
+                this.appendPiece(CheckerArea.WHITE_CHECKER); 
             }
         }
         else
         {
             for(int i = 0 ; i < howManyPieces; i++)
             {
-                this.appendPiece(CheckerArea.redChecker);
+                this.appendPiece(CheckerArea.RED_CHECKER);
             }
         }        
     }
@@ -79,9 +79,9 @@ package backgammon;
     {        
         if(this.isEmpty()) //Έλεγχος αν η περιοχή είναι άδεια.
         {            
-            return CheckerArea.emptyArea;
+            return CheckerArea.EMPTY_AREA;
         }
-        byte removedPiece = this.checkerArray[--this.currentCapacity];        
+        byte removedPiece = this.CHECKER_ARRAY[--this.currentCapacity];        
         return removedPiece;
     }
 
@@ -92,7 +92,7 @@ package backgammon;
     protected void appendPiece(byte piece)
     {        
         //System.out.println("Cap " + capacity);
-        this.checkerArray[this.currentCapacity] =  piece;    
+        this.CHECKER_ARRAY[this.currentCapacity] =  piece;    
         this.currentCapacity++;
     }
          
@@ -121,7 +121,7 @@ package backgammon;
     protected boolean isWhiteArea()
     {
         if(this.isEmpty()) return true;
-        if(this.checkerArray[0] == CheckerArea.whiteChecker) return true;
+        if(this.CHECKER_ARRAY[0] == CheckerArea.WHITE_CHECKER) return true;
         return false;
     }
 
@@ -145,7 +145,7 @@ package backgammon;
         String str = "";
         for(int i = 0; i < this.currentCapacity; i++)
         {
-            if((this.checkerArray[i]) == 1)   
+            if((this.CHECKER_ARRAY[i]) == 1)   
                 str += "R";    
             else 
                 str += "W";    
