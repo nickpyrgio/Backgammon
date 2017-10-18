@@ -232,7 +232,7 @@ public final class Evaluator {
      */
     private  double contact()
     {      
-       double value = 0.0;
+       double value;
        value = this.portesCount()*this.house 
                + this.exposedCount()*this.exposed 
                + this.housesInHomeAreaCount()*this.importantHouse 
