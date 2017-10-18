@@ -13,8 +13,8 @@ import javax.swing.JLabel;
  */
 class ImageLabel extends JLabel {
 
-   private Image image;
-   private ImageIcon imgIcon;   
+   private final Image image;
+   private final ImageIcon imgIcon;   
 
       
 /**
