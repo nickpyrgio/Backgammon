@@ -41,19 +41,19 @@ public final class State {
     {
         private int prevPos; // prohgoumenh thesh tou pouliou
         private int newPos; // epomenh thseh tou pouliou
-        private byte player; // poiou paixth einai to pouli
+        private final byte PLAYER; // poiou paixth einai to pouli
 
         //Profanes
         TempMove(int prevPos ,int newPos, byte player)
         {
             this.prevPos = prevPos;
             this.newPos = newPos;
-            this.player = player;
+            this.PLAYER = player;
         }
 
         protected byte getPlayer()
         {
-            return this.player;
+            return this.PLAYER;
         }
         protected int getPrevPos()
         {
@@ -268,8 +268,8 @@ public final class State {
                       }                          
                     }
                     max = Math.max(max, timesPlayed);
-                    timesPlayed = max;         
-                    return timesMustBePlayed - max;
+                    //timesPlayed = max;         
+                    return timesMustBePlayed - timesPlayed;
                  }                 
               }
               for(int area = 23; area >= 0 ; area--)
