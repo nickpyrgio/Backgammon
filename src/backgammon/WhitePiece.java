@@ -32,7 +32,7 @@ public class WhitePiece extends Piece{
     {
         super(x,y, row); //Κλήση του κατασκευαστή της Piece.
         this.img = new ImageIcon(PATH + "whiteChecker1.png"); //Ορισμός της εικόνας για το πούλι.
-        this.setIcon(img);
+        super.setIcon(img);
     }
     
     /**
